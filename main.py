@@ -81,7 +81,7 @@ def visualize_top_words(words, top_n: int = 15):
     plt.show()
 
 
-def get_top_words(url: str) -> dict | None:
+def get_words_count(url: str) -> dict | None:
     """Get top words from URL"""
     try:
         headers = {"User-Agent": "Mozilla/5.0"}
@@ -96,7 +96,7 @@ def get_top_words(url: str) -> dict | None:
 
 def test_visualize_top_words():
     """Test visualize top words"""
-    words = get_top_words("http://localhost:9999/")
+    words = get_words_count("http://localhost:9999/")
     assert words is None
     try:
         visualize_top_words(words)
@@ -107,7 +107,7 @@ def test_visualize_top_words():
 def main():
     """Main function"""
     test_visualize_top_words()
-    words = get_top_words(args.url)
+    words = get_words_count(args.url)
     visualize_top_words(words, 25)
 
 
